@@ -1,8 +1,9 @@
 "use client";
 
-import { LogOut } from "lucide-react";
+import { LogOut, Loader2 } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 interface LogoutButtonProps {
   className?: string;
@@ -11,8 +12,10 @@ interface LogoutButtonProps {
 export function LogoutButton({ className }: LogoutButtonProps) {
   const router = useRouter();
   const supabase = createClient();
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleLogout = async () => {
+    setIsLoading(true);
     await supabase.auth.signOut();
     router.push("/");
     router.refresh();
@@ -21,9 +24,14 @@ export function LogoutButton({ className }: LogoutButtonProps) {
   return (
     <button
       onClick={handleLogout}
-      className={className}
+      disabled={isLoading}
+      className={`flex items-center gap-2 text-sm text-[#898989] hover:text-[#242424] transition-colors disabled:opacity-50 ${className}`}
     >
-      <LogOut className="w-4 h-4" />
+      {isLoading ? (
+        <Loader2 className="w-4 h-4 animate-spin" />
+      ) : (
+        <LogOut className="w-4 h-4" />
+      )}
       Sign out
     </button>
   );

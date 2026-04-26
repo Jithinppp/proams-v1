@@ -1,127 +1,172 @@
-# 🚀 AV Management System - Detailed Implementation Roadmap
+# PROIN - Asset Management System
 
-This roadmap tracks the progress of the AVMS Logistics Engine.
-**Legend:** `[x]` = Completed | `[ ]` = Pending
+## ✅ Completed Tasks
 
----
+### Foundation
 
-## Phase 1: Foundation (Auth & RBAC)
+- [x] Supabase database setup with schema.sql
+- [x] Supabase Auth (email/password)
+- [x] Role-Based Access Control (RBAC)
+  - [x] User roles: ADMIN, PM, INV, TECH
+  - [x] Middleware for route protection
+  - [x] Profile table with role
+  - [x] Automatic profile creation on signup
+- [x] Login page with validation
+- [x] Dashboard pages per role (admin, pm, inv, tech)
+- [x] Quick Actions on Inventory Dashboard
+- [x] Reusable UI components (Input, Button, Textarea, Select, SearchInput, Navbar, StatsCard)
+- [x] 404 & Forbidden pages
+- [x] Logout functionality
 
-- [x] **Supabase Environment Setup**
-  - [x] Create tables based on `schema.sql`.
-  - [x] Setup Supabase Auth.
-  - [x] Create `handle_new_user()` Postgres function.
-  - [x] Create Trigger on `auth.users` to auto-insert into `public.profiles` with role `TECH`.
-- [x] **Authentication Layer**
-  - [x] Implement `authStore` (Zustand) for session and role persistence.
-  - [x] Build Login and Signup pages.
-- [x] **Role-Based Access Control (RBAC)**
-  - [x] Implement Next.js Middleware for edge-level route protection.
-  - [x] Create `RoleLayout` wrapper for different dashboards.
-  - [x] Configure role-specific route guards (`ADMIN`, `INV`, `PM`, `TECH`).
+### Design System
 
----
+- [x] Cal.com inspired design
+- [x] Inter font from next/font
+- [x] Gray focus colors (#a1a1aa)
+- [x] Multi-layer shadow system
 
-Since we've just polished the Categories page, the immediate next step is to maintain consistency by applying the same Management Intelligence to the rest of the Catalog Builder.
+### Performance
 
-1.
-
--
--
-
-## Phase 2: The Catalog & Warehouse
-
-- [x] **Catalog CRUD (The DNA)**
-  - [ ] Category management (Create, Read, Update, Delete).
-  - [x] Subcategory management (Linked to Category).
-  - [x] Model management (Linked to Subcategory).
-  - [x] Implementation of Edit Mode for all catalog levels.
-  - [x] Form validation using `Zod` and `react-hook-form`.
-  - [ ] Subcategories: Add search, a count of how many Models are assigned to each, and the Active/Inactive toggle.
-  - [ ] Models: Add search, a count of how many physical Assets belong to each model, and the Active/Inactive toggle.
-
-- [ ] **Warehouse Hierarchy (The Map)**
-  - [x] Storage Location CRUD (Create, Read, Update, Delete).
-  - [x] Implement Recursive Parent/Child relationship (Zone $\to$ Rack $\to$ Shelf $\to$ Bin).
-  - [x] UI for visualizing the hierarchy (Tree view or Nested Lists).
-  - [x] Location assignment interface (Move an item from one bin to another).
-  - [ ] always show the inline edit buttons not on hover
-- [ ] **Venue Management**
-  - [ ] Venue CRUD (Name, Address, Dock Details, Power Access, etc.).
-  - [ ] Venue list view for PMs to select during project creation.
+- [x] React.cache() for server client
+- [x] Parallel data fetching in dashboards
 
 ---
 
-## Phase 3: Asset & Consumable Inventory
+## 📋 Remaining Tasks
 
-- [ ] **Serialized Assets (The Money Gear)**
-  - [x] Implement Asset Registration form.
-  - [x] Build the **Asset Code Generator** logic (`CAT-SUB-MFR-SEQ`).
-  - [x] Asset List View with advanced filtering (by status, model, location).
-  - [ ] **Asset Update/Edit:** Implement form to update `status`, `condition`, and `location_id`.
-  - [x] **Asset Deletion:** Implement soft-delete (`is_active = false`) for asset records.
-  - [ ] **Single Asset Detail View:**
-    - [x] Create a dedicated page for a single asset.
-    - [ ] add Links input for assets (attaching links etc)
-    - [ ] attach image
-    - [ ] Display full technical specs from the linked `Model`.
-    - [x] Display integrated `Maintenance Logs` for that specific asset.
-    - [ ] Display `Activity Log` timeline (who moved it, when it was updated).
-- [ ] **Consumables Management (The Bulk Gear)**
-  - [ ] Consumable stock tracking interface.
-  - [ ] "Quick Adjust" buttons (+ / -) for quantity updates.
-  - [ ] Low-stock alert system (Red badges when `quantity <= low_stock_threshold`).
-- [ ] **Kitting System**
-  - [ ] Kit creation interface (Name, Description).
-  - [ ] Polymorphic `kit_items` addition:
-    - [ ] Logic to add Serialized Assets to a kit.
-    - [ ] Logic to add Consumables (with quantity) to a kit.
-  - [ ] Kit "Pack" view (Checklist of everything that should be in the road case).
+### Phase 1: Catalog & Warehouse
 
----
+#### Categories & Subcategories
 
-## Phase 4: Project Planning & Reservation (The Engine)
+- [x] Category management (CRUD) [except delete]
+- [x] Subcategory management with search
+- [x] Add count of models per subcategory
 
-- [ ] **Project Management**
-  - [ ] Project CRUD (Client, Venue selection, Start/End dates).
-  - [ ] Detailed timing fields (Load-in, Show start, Show end, Load-out).
-- [ ] **The Reservation Engine (The Core Logic)**
-  - [ ] Equipment Request interface: PM selects a **Model** and a **Quantity**.
-  - [ ] **Server-Side Conflict Check:**
-    - [ ] Implement SQL function to check for date-range overlaps for requested models.
-    - [ ] Logic: `(Project A Start $\le$ Project B End) AND (Project B Start $\le$ Project A End)`.
-  - [ ] **Capacity Validation:** Check if `(Total Owned - Reserved) >= Requested Quantity`.
-  - [ ] Conflict Alert UI: Warning PMs when gear is unavailable for chosen dates.
-- [ ] **Asset Assignment**
-  - [ ] Logic to bridge "Requested Model" $\to$ "Specific Asset ID" (The bridge between PM and TECH).
-- [ ] **Booking Calendar**
-  - [ ] Integrate `date-fns` for timeline calculations.
-  - [ ] Visual Calendar/Gantt view of asset availability across projects.
+#### Models
+
+- [x] Model management (CRUD)
+- [x] Search functionality
+- [x] Count of assets per model
+
+#### Storage Locations
+
+- [ ] Location CRUD
+- [ ] Hierarchical view (Zone → Rack → Bin)
+- [ ] Inline edit buttons (always visible)
+
+#### Venues
+
+- [ ] Venue CRUD
+- [ ] Venue list view for PM
 
 ---
 
-## Phase 5: Field Execution (Technician Tools)
+### Phase 2: Assets & Consumables
 
-- [ ] **Loading Checklist (Pick-List)**
-  - [ ] Mobile-optimized view of all gear `RESERVED` for a specific project.
-  - [ ] QR/Barcode Scan-to-Verify: Change status from `RESERVED` $\to$ `OUT`.
-- [ ] **Return & QC Flow**
-  - [ ] Return scan interface: Scan gear back into warehouse.
-  - [ ] **Condition Assessment Form:** Tech marks gear as `AVAILABLE`, `PENDING_QC`, or `MAINTENANCE`.
-  - [ ] Status transition: `OUT` $\to$ `PENDING_QC` or `AVAILABLE`.
-- [ ] **Damage Reporting**
-  - [ ] Mobile upload for damage photos (Supabase Storage).
-  - [ ] Instant creation of `maintenance_log` entry upon reporting damage.
+#### Assets
+
+- [ ] Asset registration form with code generator
+- [ ] Asset list with filtering (status, model, location)
+- [ ] Asset update/edit (status, condition, location)
+- [ ] Soft-delete (is_active = false)
+- [ ] Single asset detail page
+  - [ ] Technical specs from Model
+  - [ ] Maintenance logs
+  - [ ] Activity log timeline
+  - [ ] Attach links/images
+- [ ] QR/Barcode scanning
+
+#### Consumables
+
+- [ ] Consumable stock tracking
+- [ ] Quick adjust buttons (+/-)
+- [ ] Low stock alerts
+
+#### Kits
+
+- [ ] Kit creation interface
+- [ ] Add assets to kit
+- [ ] Add consumables to kit
+- [ ] Pack view / checklist
 
 ---
 
-## Phase 6: Maintenance & Auditing
+### Phase 3: Projects & Reservations
 
-- [ ] **Maintenance Dashboard**
-  - [ ] Filtered queue of all assets in `MAINTENANCE` or `PENDING_QC` status.
-  - [ ] **The QC Approval Workflow:** `INV` manager reviews repair $\to$ Clicks "Pass" $\to$ status becomes `AVAILABLE`.
-- [ ] **Audit Tool (Cycle Counting)**
-  - [ ] "Scan & Verify" mode: Tech scans an item, system verifies if the `location_id` matches the database.
-  - [ ] Discrepancy report generation (List of items found in the wrong bin).
-- [ ] **Global Activity Log**
-  - [ ] Searchable, filterable timeline of every system change (User, Action, Old Value, New Value).
+#### Projects
+
+- [ ] Project CRUD
+- [ ] Client & venue selection
+- [ ] Timing fields (load-in, show, load-out)
+
+#### Reservations
+
+- [ ] Equipment request (Model + Quantity)
+- [ ] Server-side conflict check
+- [ ] Capacity validation
+- [ ] Asset assignment (Model → Specific Asset)
+- [ ] Booking calendar / Gantt view
+
+---
+
+### Phase 4: Technician Tools
+
+#### Assignments
+
+- [ ] Mobile-optimized pick-list
+- [ ] QR scan to verify (RESERVED → OUT)
+- [ ] Return scan interface
+- [ ] Condition assessment form
+
+#### Maintenance
+
+- [ ] Maintenance queue (MAINTENANCE, PENDING_QC)
+- [ ] QC approval workflow (INV review → Pass → AVAILABLE)
+
+---
+
+### Phase 5: Reporting & Audit
+
+#### Reports
+
+- [ ] Generate pull-sheets/itineraries (PDF)
+- [ ] Asset availability reports
+
+#### Audit
+
+- [ ] Scan & verify mode
+- [ ] Discrepancy report
+- [ ] Global activity log search/filter
+
+---
+
+### UI/UX Enhancements
+
+#### Components
+
+- [ ] Badge component for status pills
+- [ ] Card component
+- [ ] Table component with pagination
+- [ ] Modal component
+- [ ] Toast/Alerts
+- [ ] Loading spinner
+- [ ] Empty state
+
+#### Navigation
+
+- [ ] Sidebar per role
+- [ ] Breadcrumbs
+- [ ] Tabs component
+
+#### Search & Filter
+
+- [ ] Command palette (cmdk)
+- [ ] Filter bar component
+
+---
+
+### DevOps
+
+- [ ] Vercel deployment
+- [ ] Environment variable setup for multi-org
+- [ ] Production build optimization

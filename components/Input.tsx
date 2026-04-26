@@ -28,9 +28,10 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
               placeholder:text-[#a1a1aa] outline-none transition-all duration-200
               disabled:opacity-50 disabled:cursor-not-allowed
               ${icon ? "pl-10" : ""}
-              ${error 
-                ? "border-red-500 hover:border-red-500 focus:border-red-500" 
-                : "hover:border-[#d4d4d8] focus:border-[#3b82f6] focus:ring-0 focus:shadow-[0_0_0_2px_rgba(59,130,246,0.4),rgba(19,19,22,0.7)_0px_1px_5px_-4px,rgba(34,42,53,0.05)_0px_4px_8px_0px]"
+              ${
+                error
+                  ? "border-red-500 hover:border-red-500 focus:border-red-500"
+                  : "hover:border-[#d4d4d8] focus:border-[#a1a1aa] focus:ring-0 focus:shadow-[0_0_0_2px_rgba(161,161,170,0.3),rgba(19,19,22,0.7)_0px_1px_5px_-4px,rgba(34,42,53,0.05)_0px_4px_8px_0px]"
               }
               ${className}
             `}
@@ -40,7 +41,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         {error && <p className="text-xs text-red-500 mt-1">{error}</p>}
       </div>
     );
-  }
+  },
 );
 
 Input.displayName = "Input";

@@ -38,10 +38,12 @@ CREATE TABLE public.subcategories (
     id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
     category_id uuid REFERENCES public.categories(id) ON DELETE CASCADE,
     code text NOT NULL UNIQUE,
+    description text null,
     name text NOT NULL,
     is_active boolean DEFAULT true,
     created_at timestamptz DEFAULT now()
 );
+
 
 CREATE TABLE public.models (
     id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
