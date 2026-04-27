@@ -71,7 +71,6 @@ export function AddModelForm({ onSuccess }: AddModelFormProps) {
     name: "specs",
   });
 
-  const watchedCategory = watch("category_id");
   const subcategoryValue = watch("subcategory_id");
 
   useEffect(() => {
@@ -90,8 +89,7 @@ export function AddModelForm({ onSuccess }: AddModelFormProps) {
 
   useEffect(() => {
     async function fetchSubcategories() {
-      const categoryToUse = watchedCategory || selectedCategory;
-      if (!categoryToUse) {
+      if (!selectedCategory) {
         setSubcategories([]);
         return;
       }
@@ -99,14 +97,14 @@ export function AddModelForm({ onSuccess }: AddModelFormProps) {
       const { data } = await supabase
         .from("subcategories")
         .select("id, category_id, code, name")
-        .eq("category_id", categoryToUse)
+        .eq("category_id", selectedCategory)
         .eq("is_active", true)
         .order("name");
       if (data) setSubcategories(data);
       setSubcategoriesLoading(false);
     }
     fetchSubcategories();
-  }, [watchedCategory, selectedCategory, supabase]);
+  }, [selectedCategory, supabase]);
 
   const onSubmit = async (data: ModelFormData) => {
     setIsLoading(true);
@@ -149,10 +147,9 @@ export function AddModelForm({ onSuccess }: AddModelFormProps) {
       <Select
         label="Category"
         options={categories.map((cat) => ({ value: cat.id, label: `${cat.code} - ${cat.name}` }))}
-        value={watchedCategory || selectedCategory}
+        value={selectedCategory}
         onChange={(value) => {
           setSelectedCategory(value);
-          setValue("category_id", value);
           setValue("subcategory_id", "", { shouldValidate: true });
         }}
         placeholder="Select a category"
