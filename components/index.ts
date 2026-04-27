@@ -20,3 +20,4 @@ export { AddModelForm } from "./AddModelForm";
 export { ModelsTable } from "./ModelsTable";
 export { ModelsList } from "./ModelsList";
 export { EditModelModal } from "./EditModelModal";
+export { Pagination } from "./Pagination";

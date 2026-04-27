@@ -31,7 +31,7 @@ export function CategoriesTable({ categories }: CategoriesTableProps) {
 
   return (
     <>
-      <div className="bg-white border border-[#e4e4e7] rounded-lg overflow-hidden">
+      <div className="bg-white border border-[#e4e4e7] rounded-lg overflow-hidden overflow-x-auto">
         <table className="w-full">
           <thead className="bg-[#f5f5f5] border-b border-[#e4e4e7]">
             <tr>
