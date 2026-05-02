@@ -224,8 +224,8 @@ export async function setPrimaryAttachment(attachmentId: string) {
   }
 
   if (attachment.is_primary) {
-    return { success: true };
-  }
+  return { success: true };
+}
 
   await supabase
     .from("asset_attachments")

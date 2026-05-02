@@ -1,0 +1,354 @@
+{
+  "categories": [
+    {
+      "name": "VIDEO",
+      "code": "VID",
+      "subcategories": [
+        {
+          "name": "Cameras",
+          "code": "CAM",
+          "models": [
+            { "brand": "Sony", "name": "FX6", "code": "FX6", "type": "Asset" },
+            { "brand": "Sony", "name": "FX3", "code": "FX3", "type": "Asset" },
+            {
+              "brand": "ARRI",
+              "name": "Alexa Mini LF",
+              "code": "AMLF",
+              "type": "Asset"
+            },
+            {
+              "brand": "RED",
+              "name": "V-Raptor",
+              "code": "VRAP",
+              "type": "Asset"
+            },
+            {
+              "brand": "Blackmagic",
+              "name": "Pocket Cinema 6K",
+              "code": "BMPC",
+              "type": "Asset"
+            }
+          ]
+        },
+        {
+          "name": "Lenses",
+          "code": "LNS",
+          "models": [
+            {
+              "brand": "Canon",
+              "name": "EF 24-70mm f/2.8L",
+              "code": "C2470",
+              "type": "Asset"
+            },
+            {
+              "brand": "Sigma",
+              "name": "Art 35mm f/1.4",
+              "code": "S35",
+              "type": "Asset"
+            },
+            {
+              "brand": "Zeiss",
+              "name": "CP.3 50mm",
+              "code": "Z50",
+              "type": "Asset"
+            }
+          ]
+        },
+        {
+          "name": "Switchers & Converters",
+          "code": "SWT",
+          "models": [
+            {
+              "brand": "Blackmagic",
+              "name": "ATEM Constellation 8K",
+              "code": "ATEM8K",
+              "type": "Asset"
+            },
+            {
+              "brand": "Blackmagic",
+              "name": "Micro Converter HDMI to SDI",
+              "code": "BMMC",
+              "type": "Asset"
+            },
+            {
+              "brand": "Decimator",
+              "name": "MD-Cross Converter",
+              "code": "DMDX",
+              "type": "Asset"
+            }
+          ]
+        },
+        {
+          "name": "Monitors",
+          "code": "MON",
+          "models": [
+            {
+              "brand": "SmallHD",
+              "name": "702 Touch",
+              "code": "S702",
+              "type": "Asset"
+            },
+            {
+              "brand": "Atomos",
+              "name": "Ninja V",
+              "code": "ANJV",
+              "type": "Asset"
+            },
+            {
+              "brand": "Sony",
+              "name": "PVM-X2400",
+              "code": "SPVM",
+              "type": "Asset"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "AUDIO",
+      "code": "AUD",
+      "subcategories": [
+        {
+          "name": "Microphones",
+          "code": "MIC",
+          "models": [
+            {
+              "brand": "Sennheiser",
+              "name": "MKH 416",
+              "code": "S416",
+              "type": "Asset"
+            },
+            {
+              "brand": "Shure",
+              "name": "SM58",
+              "code": "SSM58",
+              "type": "Asset"
+            },
+            {
+              "brand": "Sennheiser",
+              "name": "EW-DP Wireless Kit",
+              "code": "SEWP",
+              "type": "Asset"
+            }
+          ]
+        },
+        {
+          "name": "Mixers & Interfaces",
+          "code": "MIX",
+          "models": [
+            {
+              "brand": "Yamaha",
+              "name": "TF5",
+              "code": "YTF5",
+              "type": "Asset"
+            },
+            {
+              "brand": "Focusrite",
+              "name": "Scarlett 18i20",
+              "code": "F18I",
+              "type": "Asset"
+            },
+            {
+              "brand": "Behringer",
+              "name": "X32",
+              "code": "BX32",
+              "type": "Asset"
+            }
+          ]
+        },
+        {
+          "name": "Cables",
+          "code": "CAB",
+          "models": [
+            {
+              "brand": "Generic",
+              "name": "XLR Cable 10m",
+              "code": "XLR10",
+              "type": "Consumable"
+            },
+            {
+              "brand": "Generic",
+              "name": "XLR Cable 20m",
+              "code": "XLR20",
+              "type": "Consumable"
+            },
+            {
+              "brand": "Generic",
+              "name": "XLR Cable 50m",
+              "code": "XLR50",
+              "type": "Consumable"
+            },
+            {
+              "brand": "Generic",
+              "name": "TRS Cable 3m",
+              "code": "TRS3",
+              "type": "Consumable"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "LIGHTING",
+      "code": "LGT",
+      "subcategories": [
+        {
+          "name": "LED Panels",
+          "code": "LED",
+          "models": [
+            {
+              "brand": "Aputure",
+              "name": "LS 600d Pro",
+              "code": "A600D",
+              "type": "Asset"
+            },
+            {
+              "brand": "Aputure",
+              "name": "Nova P60c",
+              "code": "ANP60",
+              "type": "Asset"
+            },
+            {
+              "brand": "Nanlite",
+              "name": "Pavotube II 6C",
+              "code": "NP6C",
+              "type": "Asset"
+            }
+          ]
+        },
+        {
+          "name": "Modifiers",
+          "code": "MOD",
+          "models": [
+            {
+              "brand": "Aputure",
+              "name": "Light Dome II",
+              "code": "ALDI",
+              "type": "Asset"
+            },
+            {
+              "brand": "Generic",
+              "name": "Softbox 60x90",
+              "code": "GS69",
+              "type": "Asset"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "GRIP & SUPPORT",
+      "code": "GRP",
+      "subcategories": [
+        {
+          "name": "Tripods & Heads",
+          "code": "TRP",
+          "models": [
+            {
+              "brand": "Sachtler",
+              "name": "Flowtech 75",
+              "code": "SFT75",
+              "type": "Asset"
+            },
+            {
+              "brand": "Manfrotto",
+              "name": "504X",
+              "code": "M504X",
+              "type": "Asset"
+            }
+          ]
+        },
+        {
+          "name": "Gimbals",
+          "code": "GIM",
+          "models": [
+            {
+              "brand": "DJI",
+              "name": "RS3 Pro",
+              "code": "DRS3",
+              "type": "Asset"
+            },
+            {
+              "brand": "Freefly",
+              "name": "Movi Pro",
+              "code": "FMVP",
+              "type": "Asset"
+            }
+          ]
+        },
+        {
+          "name": "Tapes & Adhesives",
+          "code": "TPE",
+          "models": [
+            {
+              "brand": "ProGrip",
+              "name": "Black Gaffer Tape 2\"",
+              "code": "PGT2B",
+              "type": "Consumable"
+            },
+            {
+              "brand": "ProGrip",
+              "name": "White Gaffer Tape 2\"",
+              "code": "PGT2W",
+              "type": "Consumable"
+            },
+            {
+              "brand": "Generic",
+              "name": "Double Sided Tape",
+              "code": "GDST",
+              "type": "Consumable"
+            },
+            {
+              "brand": "Generic",
+              "name": "Electrical Tape Black",
+              "code": "GETB",
+              "type": "Consumable"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "POWER & BATTERY",
+      "code": "PWR",
+      "subcategories": [
+        {
+          "name": "V-Mount Batteries",
+          "code": "VMT",
+          "models": [
+            {
+              "brand": "Core SWX",
+              "name": "Hypercore 160",
+              "code": "CH160",
+              "type": "Asset"
+            },
+            {
+              "brand": "Anton Bauer",
+              "name": "D-Cell",
+              "code": "ABDC",
+              "type": "Asset"
+            }
+          ]
+        },
+        {
+          "name": "Power Distribution",
+          "code": "PDI",
+          "models": [
+            {
+              "brand": "Generic",
+              "name": "Power Strip 6-way",
+              "code": "GP6W",
+              "type": "Asset"
+            },
+            {
+              "brand": "Generic",
+              "name": "Extension Cable 10m",
+              "code": "GEX10",
+              "type": "Consumable"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -36,3 +36,6 @@ export { AddMaintenanceLogModal } from "./AddMaintenanceLogModal";
 export { AttachmentsList, type Attachment } from "./AttachmentsList";
 export { AddAttachmentModal } from "./AddAttachmentModal";
 export { ActivityLogViewer } from "./ActivityLogViewer";
+export { ConsumablesList } from "./ConsumablesList";
+export { QuickAdjustModal } from "./QuickAdjustModal";
+export { AddConsumableModal } from "./AddConsumableModal";

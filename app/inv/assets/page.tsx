@@ -68,7 +68,7 @@ export default async function AssetsPage() {
     <div className="min-h-screen bg-[#FAFAFA]">
       <Navbar email={user?.email || ""} />
       <main className="max-w-7xl mx-auto p-4 md:p-8">
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
           <div className="flex items-center gap-4">
             <Link
               href="/inv"
@@ -86,8 +86,8 @@ export default async function AssetsPage() {
               </div>
             </div>
           </div>
-          <Link href="/inv/assets/add">
-            <Button>
+          <Link href="/inv/assets/add" className="w-full sm:w-auto">
+            <Button className="w-full sm:w-auto">
               <Plus className="w-4 h-4 mr-2" />
               Add Asset
             </Button>
