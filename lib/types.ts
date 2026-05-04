@@ -463,3 +463,15 @@ export interface Attachment {
   is_primary: boolean;
   sort_order: number;
 }
+
+export interface Supplier {
+  id: string;
+  name: string;
+  contact_name: string | null;
+  email: string | null;
+  phone: string | null;
+  website: string | null;
+  address: string | null;
+  notes: string | null;
+  rating: number | null;
+}

@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Navbar, AddConsumableModal, EditConsumableModal, DeleteConsumableModal, Button } from "@/components";
 import { ArrowLeft, Package, Plus, Minus, Loader2, Pencil, Trash2 } from "lucide-react";
 import { adjustConsumableQuantity, getConsumables } from "@/lib/actions/consumables";
-import type { ConsumableItem, Category, Subcategory, Model, Location } from "@/lib/types";
+import type { ConsumableItem, Category, Subcategory, Model, Location, Supplier } from "@/lib/types";
 
 export function ConsumablesClient({ 
   consumables: initialConsumables, 
@@ -14,6 +14,7 @@ export function ConsumablesClient({
   subcategories,
   models,
   locations,
+  suppliers,
 }: { 
   consumables: ConsumableItem[]; 
   userEmail: string;
@@ -21,6 +22,7 @@ export function ConsumablesClient({
   subcategories: Subcategory[];
   models: Model[];
   locations: Location[];
+  suppliers?: Supplier[];
 }) {
   const [showAddModal, setShowAddModal] = useState(false);
   const [consumables, setConsumables] = useState(initialConsumables);
@@ -204,6 +206,7 @@ export function ConsumablesClient({
           subcategories={subcategories}
           models={models}
           locations={locations}
+          suppliers={suppliers}
           onClose={() => {
             setShowAddModal(false);
             refreshConsumables();

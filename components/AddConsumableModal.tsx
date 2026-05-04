@@ -7,13 +7,14 @@ import { Input } from "./Input";
 import { Button } from "./Button";
 import { Select } from "./Select";
 import { Package, X } from "lucide-react";
-import type { Category, Subcategory, Model, Location } from "@/lib/types";
+import type { Category, Subcategory, Model, Location, Supplier } from "@/lib/types";
 
 interface AddConsumableModalProps {
   categories: Category[];
   subcategories: Subcategory[];
   models: Model[];
   locations: Location[];
+  suppliers?: Supplier[];
   onClose: () => void;
 }
 
@@ -22,6 +23,7 @@ export function AddConsumableModal({
   subcategories,
   models,
   locations,
+  suppliers = [],
   onClose,
 }: AddConsumableModalProps) {
   const router = useRouter();
@@ -31,6 +33,7 @@ export function AddConsumableModal({
   const [selectedSubcategory, setSelectedSubcategory] = useState("");
   const [selectedModel, setSelectedModel] = useState("");
   const [selectedLocation, setSelectedLocation] = useState("");
+  const [selectedSupplier, setSelectedSupplier] = useState("");
   const [quantity, setQuantity] = useState("0");
   const [threshold, setThreshold] = useState("5");
   const [unitType, setUnitType] = useState("");
@@ -74,6 +77,7 @@ export function AddConsumableModal({
     const { error: insertError } = await supabase.from("consumables").insert({
       model_id: selectedModel,
       location_id: selectedLocation || null,
+      supplier_id: selectedSupplier || null,
       quantity: parseInt(quantity) || 0,
       low_stock_threshold: parseInt(threshold) || 5,
       unit_type: unitType || null,
@@ -107,6 +111,11 @@ export function AddConsumableModal({
   const locationOptions = [
     { value: "", label: "Select location..." },
     ...locations.map((l) => ({ value: l.id, label: l.name })),
+  ];
+
+  const supplierOptions = [
+    { value: "", label: "Select supplier..." },
+    ...suppliers.map((s) => ({ value: s.id, label: s.name })),
   ];
 
   return (
@@ -164,6 +173,14 @@ export function AddConsumableModal({
             value={selectedLocation}
             onChange={setSelectedLocation}
             placeholder="Select location..."
+          />
+
+          <Select
+            label="Supplier"
+            options={supplierOptions}
+            value={selectedSupplier}
+            onChange={setSelectedSupplier}
+            placeholder="Select supplier..."
           />
 
           <div className="grid grid-cols-2 gap-4">
