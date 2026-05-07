@@ -79,7 +79,7 @@ export function KitDetailClient({ kit, assets, consumables, userEmail }: KitDeta
               <Edit className="w-4 h-4 mr-2" />
               Edit
             </Button>
-            <Button variant="destructive" onClick={() => setShowDeleteModal(true)}>
+            <Button variant="danger" onClick={() => setShowDeleteModal(true)}>
               <Trash2 className="w-4 h-4 mr-2" />
               Delete
             </Button>

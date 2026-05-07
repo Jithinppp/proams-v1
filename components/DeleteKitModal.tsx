@@ -10,6 +10,7 @@ import { Trash2, AlertTriangle, X } from "lucide-react";
 interface Kit {
   id: string;
   name: string;
+  description: string | null;
 }
 
 interface DeleteKitModalProps {

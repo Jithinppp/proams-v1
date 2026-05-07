@@ -334,10 +334,6 @@ export function SuppliersList({ suppliers: initialSuppliers }: SuppliersListProp
                 }}
                 error={errors.website}
                 placeholder="https://..."
-                onChange={(e) =>
-                  setFormData({ ...formData, website: e.target.value })
-                }
-                placeholder="https://..."
               />
 
               <Input

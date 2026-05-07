@@ -23,7 +23,17 @@ export default async function ConsumablesPage() {
   const subcategories = (subcategoriesRes.data || []).map((s: any) => ({ id: s.id, name: s.name, category_id: s.category_id }));
   const models = (modelsRes.data || []).map((m: any) => ({ id: m.id, name: m.name, brand: m.brand, subcategory_id: m.subcategory_id }));
   const locations = (locationsRes.data || []).map((l: any) => ({ id: l.id, name: l.name }));
-  const suppliers = (suppliersRes.data || []).map((s: any) => ({ id: s.id, name: s.name }));
+  const suppliers = (suppliersRes.data || []).map((s: any) => ({
+    id: s.id,
+    name: s.name,
+    contact_name: s.contact_name,
+    email: s.email,
+    phone: s.phone,
+    website: s.website,
+    address: s.address,
+    notes: s.notes,
+    rating: s.rating,
+  }));
 
   return (
     <ConsumablesClient 
